@@ -12,7 +12,7 @@ jb-py-test:
 jb-py-release:
   stage: stg_release
   script:
-    - zip lambda_function.zip index.py
+    - zip Python_lambda_function.zip index.py
 
 jb-py-deploy:
   stage: stg_deploy
