@@ -1,0 +1,21 @@
+stages:
+  - stg_test
+  - stg_release
+  - stg_deploy
+
+jb-py-test:
+  stage: stg_test
+  script:
+    - echo " test python"
+    - python -m unittest discover
+
+jb-py-release:
+  stage: stg_release
+  script:
+    - zip lambda_function.zip index.py
+
+jb-py-deploy:
+  stage: stg_deploy
+  script:
+    - aws s3 cp lambda_function.zip s3://gitlab-examen-d1/
+    - aws lambda update-function-code --function-name gitlab-examen-d1 --s3-bucket gitlab-examen-di --s3-key lambda_function.zip
