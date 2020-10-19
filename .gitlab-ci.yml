@@ -12,7 +12,6 @@ jb-py-test:
 jb-py-release:
   stage: stg_release
   script:
-    - apt-get install zip
     - zip Python_lambda_function.zip index.py
 
 jb-py-deploy:
